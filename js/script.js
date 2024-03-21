@@ -46,20 +46,16 @@ function selectPiece(piece) {
 function movePiece(cell) {
     const row = parseInt(cell.dataset.row);
     const col = parseInt(cell.dataset.col);
+    const selectedRow = parseInt(selectedPiece.parentElement.dataset.row);
+    const selectedCol = parseInt(selectedPiece.parentElement.dataset.col);
 
-    if (selectedPiece) {
-        const selectedRow = parseInt(selectedPiece.parentElement.dataset.row);
-        const selectedCol = parseInt(selectedPiece.parentElement.dataset.col);
+    const isValidMove = isValidMoveForPlayer(row, col, selectedRow, selectedCol, currentPlayer);
 
-        const isValidMove = isValidMoveForPlayer(row, col, selectedRow, selectedCol, currentPlayer);
-        const isValidCapture = isValidCaptureMove(selectedRow, selectedCol, row, col, currentPlayer);
-
-        if (isValidMove && (cell.childNodes.length === 0 || isValidCapture)) {
-            cell.appendChild(selectedPiece);
-            selectedPiece.classList.remove('selected');
-            selectedPiece = null;
-            currentPlayer = (currentPlayer === 'red') ? 'black' : 'red';
-        }
+    if (selectedPiece && isValidMove && cell.childNodes.length === 0) {
+        cell.appendChild(selectedPiece);
+        selectedPiece.classList.remove('selected');
+        selectedPiece = null;
+        currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
     }
 }
 
