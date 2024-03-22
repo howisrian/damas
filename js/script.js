@@ -2,6 +2,9 @@ const board = document.getElementById('board');
 let selectedPiece = null;
 let currentPlayer = 'red';
 
+let redWins = 0;
+let blackWins = 0;
+
 function createBoard() {
     for (let row = 0; row < 8; row++) {
         for (let col = 0; col < 8; col++) {
@@ -79,6 +82,7 @@ function movePiece(cell) {
         selectedPiece = null;
 
         updateTurnDisplay(); 
+        checkWinner();
     }
 }
 
@@ -109,13 +113,43 @@ function updateTurnDisplay() {
     }
 }
 
-createBoard();
+function checkWinner() {
+    const redPieces = document.querySelectorAll('.piece.red').length;
+    const blackPieces = document.querySelectorAll('.piece.black').length;
 
+    if (redPieces === 0) {
+        alert("O jogador Preto venceu!");
+        blackWins++;
+        resetGame();
+    } else if (blackPieces === 0) {
+        alert("O jogador Vermelho venceu!");
+        redWins++;
+        resetGame();
+    }
+    updateWinsPanel();
+}
+
+function updateWinsPanel() {
+    const winsPanel = document.getElementById('wins-panel');
+    winsPanel.textContent = `Vitórias: Vermelho - ${redWins}, Preto - ${blackWins}`;
+}
+
+function resetGame() {
+    board.innerHTML = '';
+    createBoard();
+}
+
+createBoard();
 
 const turnDisplay = document.createElement('div');
 turnDisplay.id = 'turn-display';
 document.body.appendChild(turnDisplay);
 updateTurnDisplay();
+
+const winsPanel = document.createElement('div');
+winsPanel.id = 'wins-panel';
+document.body.appendChild(winsPanel);
+updateWinsPanel();
 
 board.addEventListener('click', (event) => {
     const target = event.target;
