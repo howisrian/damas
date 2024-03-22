@@ -51,11 +51,32 @@ function movePiece(cell) {
 
     const isValidMove = isValidMoveForPlayer(row, col, selectedRow, selectedCol, currentPlayer);
 
-    if (selectedPiece && isValidMove && cell.childNodes.length === 0) {
-        cell.appendChild(selectedPiece);
+    if (selectedPiece && isValidMove) {
+        if (cell.childNodes.length === 0) {
+            // Movimento simples
+            cell.appendChild(selectedPiece);
+            currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
+        } else if (cell.childNodes.length === 1) {
+            const opponentPiece = cell.childNodes[0];
+            const opponentRow = parseInt(cell.dataset.row);
+            const opponentCol = parseInt(cell.dataset.col);
+            const nextRow = row + (row - selectedRow);
+            const nextCol = col + (col - selectedCol);
+
+            if (nextRow >= 0 && nextRow < 8 && nextCol >= 0 && nextCol < 8) {
+                const nextCell = document.querySelector(`[data-row="${nextRow}"][data-col="${nextCol}"]`);
+
+                if (nextCell.childNodes.length === 0) {
+                    // Movimento de captura
+                    cell.removeChild(opponentPiece);
+                    nextCell.appendChild(selectedPiece);
+                    currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
+                }
+            }
+        }
+
         selectedPiece.classList.remove('selected');
         selectedPiece = null;
-        currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
     }
 }
 
