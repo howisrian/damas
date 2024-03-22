@@ -77,6 +77,8 @@ function movePiece(cell) {
 
         selectedPiece.classList.remove('selected');
         selectedPiece = null;
+
+        updateTurnDisplay(); 
     }
 }
 
@@ -89,7 +91,7 @@ function isValidMoveForPlayer(row, col, selectedRow, selectedCol, player) {
         return false;
     }
 
-    // Verifica se o movimento é diagonal para a esquerda ou para a direita
+    
     if ((row === selectedRow + direction) && (col === selectedCol + direction || col === selectedCol - direction)) {
         return true;
     }
@@ -97,7 +99,24 @@ function isValidMoveForPlayer(row, col, selectedRow, selectedCol, player) {
     return false;
 }
 
+function updateTurnDisplay() {
+    const turnDisplay = document.getElementById('turn-display');
+    turnDisplay.textContent = `Player ${currentPlayer}, your round`;
+    if (currentPlayer === 'red') {
+        turnDisplay.style.backgroundColor = 'red';
+    } else {
+        turnDisplay.style.backgroundColor = '#333';
+    }
+}
+
 createBoard();
+
+
+const turnDisplay = document.createElement('div');
+turnDisplay.id = 'turn-display';
+document.body.appendChild(turnDisplay);
+updateTurnDisplay();
+
 board.addEventListener('click', (event) => {
     const target = event.target;
     if (target.classList.contains('cell')) {

@@ -3,6 +3,15 @@ body, html {
     margin: 0;
 }
 
+#turn-display {
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    margin: 20px;
+    z-index: 9999; 
+}
 .container {
     display: flex;
     flex-direction: column;
