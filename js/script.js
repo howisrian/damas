@@ -1,11 +1,19 @@
-const board = document.getElementById('board');
 let selectedPiece = null;
 let currentPlayer = 'red';
-
 let redWins = 0;
 let blackWins = 0;
+let gameOver = false;
+
+function startGame() {
+    const welcomeScreen = document.getElementById('welcome-screen');
+    welcomeScreen.style.display = 'none'; // Oculta a tela de boas-vindas
+    createBoard(); // Inicia o jogo criando o tabuleiro
+}
 
 function createBoard() {
+    const board = document.getElementById('board');
+    board.innerHTML = ''; // Limpa o conteúdo do tabuleiro
+
     for (let row = 0; row < 8; row++) {
         for (let col = 0; col < 8; col++) {
             const cell = document.createElement('div');
@@ -47,6 +55,8 @@ function selectPiece(piece) {
 }
 
 function movePiece(cell) {
+    if (gameOver) return; // Se o jogo terminou, não permita mais movimentos
+
     const row = parseInt(cell.dataset.row);
     const col = parseInt(cell.dataset.col);
     const selectedRow = parseInt(selectedPiece.parentElement.dataset.row);
@@ -82,7 +92,7 @@ function movePiece(cell) {
         selectedPiece = null;
 
         updateTurnDisplay(); 
-        checkWinner();
+        checkWinner(); // Verifica se alguém ganhou após cada movimento
     }
 }
 
@@ -95,7 +105,6 @@ function isValidMoveForPlayer(row, col, selectedRow, selectedCol, player) {
         return false;
     }
 
-    
     if ((row === selectedRow + direction) && (col === selectedCol + direction || col === selectedCol - direction)) {
         return true;
     }
@@ -117,43 +126,52 @@ function checkWinner() {
     const redPieces = document.querySelectorAll('.piece.red').length;
     const blackPieces = document.querySelectorAll('.piece.black').length;
 
+    let winnerMessage = '';
     if (redPieces === 0) {
-        alert("O jogador Preto venceu!");
+        winnerMessage = "O jogador Preto venceu!";
         blackWins++;
-        resetGame();
+        gameOver = true;
     } else if (blackPieces === 0) {
-        alert("O jogador Vermelho venceu!");
+        winnerMessage = "O jogador Vermelho venceu!";
         redWins++;
-        resetGame();
+        gameOver = true;
+    }
+
+    if (winnerMessage !== '') {
+        const messageBox = document.createElement('div');
+        messageBox.classList.add('message-box');
+        messageBox.innerHTML = `
+            <p>${winnerMessage}</p>
+            <button onclick="continueGame()">Continuar</button>
+            <button onclick="resetGame()">Reiniciar</button>
+        `;
+        document.body.appendChild(messageBox);
     }
     updateWinsPanel();
 }
 
+function continueGame() {
+    const messageBox = document.querySelector('.message-box');
+    if (messageBox) {
+        messageBox.remove();
+    }
+}
+
 function updateWinsPanel() {
-    const winsPanel = document.getElementById('wins-panel');
-    winsPanel.textContent = `Vitórias: Vermelho - ${redWins}, Preto - ${blackWins}`;
+    const redWinsElement = document.querySelector('.red-wins');
+    const blackWinsElement = document.querySelector('.black-wins');
+
+    redWinsElement.textContent = redWins;
+    blackWinsElement.textContent = blackWins;
 }
 
 function resetGame() {
     board.innerHTML = '';
     createBoard();
+    gameOver = false; // Reseta o status do jogo
 }
-
-createBoard();
 
 const turnDisplay = document.createElement('div');
 turnDisplay.id = 'turn-display';
 document.body.appendChild(turnDisplay);
 updateTurnDisplay();
-
-const winsPanel = document.createElement('div');
-winsPanel.id = 'wins-panel';
-document.body.appendChild(winsPanel);
-updateWinsPanel();
-
-board.addEventListener('click', (event) => {
-    const target = event.target;
-    if (target.classList.contains('cell')) {
-        movePiece(target);
-    }
-});
