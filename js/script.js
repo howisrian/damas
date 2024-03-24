@@ -4,6 +4,12 @@ let redWins = 0;
 let blackWins = 0;
 let gameOver = false;
 
+function startGame() {
+    const welcomeScreen = document.getElementById('welcome-screen');
+    welcomeScreen.style.display = 'none'; // Oculta a tela de boas-vindas
+    createBoard(); // Inicia o jogo criando o tabuleiro
+}
+
 function createBoard() {
     const board = document.getElementById('board');
     board.innerHTML = ''; // Limpa o conteúdo do tabuleiro
