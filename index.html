@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Dama Game</h1>
-        <div id="turn-display"></div>
+        <div id="turn-display" style="display: none;"></div>
         <div id="board" class="board"></div>
         <div id="wins-panel">
             <div>
@@ -24,11 +24,7 @@
             <h2>Welcome Dama Game</h2>
             <button onclick="startGame()">Start Game</button>
         </div>
-        <div class="message-box" id="message-box">
-            <p id="winner-message"></p>
-            <button onclick="continueGame()">Continue</button>
-            <button onclick="resetGame()">Restart</button>
-        </div>
+        
     </div>
     <footer class="end">
         <div class="last-text">

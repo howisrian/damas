@@ -3,10 +3,14 @@ let currentPlayer = 'red';
 let redWins = 0;
 let blackWins = 0;
 let gameOver = false;
+let messageBox; // Variável global para armazenar a caixa de mensagem
 
 function startGame() {
     const welcomeScreen = document.getElementById('welcome-screen');
+    const turnDisplay = document.getElementById('turn-display');
     welcomeScreen.style.display = 'none'; // Oculta a tela de boas-vindas
+    turnDisplay.style.display = 'flex'; // Adiciona a tela de turno
+
 
     // Cria o tabuleiro somente após o início do jogo
     createBoard();
@@ -143,6 +147,8 @@ function updateTurnDisplay() {
     }
 }
 
+
+
 function checkWinner() {
     const redPieces = document.querySelectorAll('.piece.red').length;
     const blackPieces = document.querySelectorAll('.piece.black').length;
@@ -159,7 +165,7 @@ function checkWinner() {
     }
 
     if (winnerMessage !== '') {
-        const messageBox = document.createElement('div');
+        messageBox = document.createElement('div');
         messageBox.classList.add('message-box');
         messageBox.innerHTML = `
             <p>${winnerMessage}</p>
@@ -172,7 +178,16 @@ function checkWinner() {
 }
 
 function continueGame() {
-    const messageBox = document.querySelector('.message-box');
+    if (!gameOver) return; // Não continue se o jogo já tiver terminado
+    if (messageBox) {
+        messageBox.remove();
+    }
+}
+
+function resetGame() {
+    board.innerHTML = '';
+    createBoard();
+    gameOver = false; // Reseta o status do jogo
     if (messageBox) {
         messageBox.remove();
     }
@@ -186,11 +201,7 @@ function updateWinsPanel() {
     blackWinsElement.textContent = blackWins;
 }
 
-function resetGame() {
-    board.innerHTML = '';
-    createBoard();
-    gameOver = false; // Reseta o status do jogo
-}
+
 
 const turnDisplay = document.createElement('div');
 turnDisplay.id = 'turn-display';
