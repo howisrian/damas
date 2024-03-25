@@ -14,7 +14,7 @@ Dama Game - The goal of the project is to offer players a digital version of the
 - HTML
 - CSS
 - JavaScript
-- DOM
+- DOM (Document Object Model)
 
 # Author
 
