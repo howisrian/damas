@@ -1,27 +1,24 @@
-# damas
-EM ANDAMENTO...
-O projeto consiste em uma implementação do clássico jogo de damas para ser jogado em um navegador da web. Os jogadores podem disputar entre si, alternando entre as peças vermelhas e pretas, com o objetivo de capturar as peças do oponente ou bloqueá-lo de realizar movimentos.
+# Sales System
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/howisrian/Portfolio2/blob/main/LICENSE) 
 
-Funcionalidades:
+# About project
 
-Interface Gráfica Amigável: A interface do jogo é simples e intuitiva, permitindo aos jogadores visualizar facilmente o tabuleiro e as peças.
+Dama Game - The goal of the project is to offer players a digital version of the game of checkers, providing a fun and challenging experience that faithfully recreates the rules and mechanics of the classic game. In addition, the project aims to practice and demonstrate skills in front-end web development, including HTML, CSS, and JavaScript.
 
-Movimentação de Peças: Os jogadores podem clicar nas peças para selecioná-las e, em seguida, clicar nas células adjacentes para movê-las de acordo com as regras do jogo.
+## Layout web
 
-Captura de Peças: Quando uma peça é movida para uma posição onde há uma peça do oponente adjacente, a peça do oponente é capturada e removida do tabuleiro.
+### Home
+![Home section](./.github/dama_game.png)
 
-Alternância de Turnos: O jogo alterna automaticamente entre os turnos dos jogadores, indicando visualmente de quem é o turno atual.
+# Technologies 
+- HTML
+- CSS
+- JavaScript
+- DOM
 
-Verificação de Vencedor: O jogo verifica automaticamente se um jogador venceu ao capturar todas as peças do oponente. Em caso afirmativo, exibe uma mensagem de vitória e oferece a opção de continuar jogando ou reiniciar o jogo.
+# Author
 
-Placar de Pontuação: Um placar de pontuação exibe o número de vitórias para cada jogador, permitindo que os jogadores acompanhem seu desempenho ao longo do tempo.
+Rian Carlo Santana dos Santos
 
-Tecnologias Utilizadas:
-
-HTML5 para estruturação do conteúdo da página.
-CSS3 para estilização e layout responsivo.
-JavaScript para lógica de jogo e interatividade.
-DOM (Document Object Model) para manipulação dinâmica dos elementos da página.
-Objetivo do Projeto:
-
-O objetivo do projeto é oferecer aos jogadores uma versão digital do jogo de damas, proporcionando uma experiência divertida e desafiadora que recria fielmente as regras e mecânicas do jogo clássico. Além disso, o projeto visa praticar e demonstrar habilidades em desenvolvimento web front-end, incluindo HTML, CSS e JavaScript.
+- Github: [@howisrian](https://www.github.com/howisrian)
+- Linkedin: [Rian Santos](https://www.linkedin.com/in/santos-rian/)
