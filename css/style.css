@@ -59,7 +59,7 @@ body, html {
 }
 
 .selected {
-    border: 2px solid #f00;
+    border: 2px solid rgb(255, 255, 255);
 }
 
 #welcome-screen {
