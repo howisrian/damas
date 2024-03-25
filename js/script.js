@@ -7,7 +7,9 @@ let gameOver = false;
 function startGame() {
     const welcomeScreen = document.getElementById('welcome-screen');
     welcomeScreen.style.display = 'none'; // Oculta a tela de boas-vindas
-    createBoard(); // Inicia o jogo criando o tabuleiro
+
+    // Cria o tabuleiro somente após o início do jogo
+    createBoard();
 }
 
 function createBoard() {
@@ -130,11 +132,11 @@ function checkWinner() {
     if (redPieces === 0) {
         winnerMessage = "O jogador Preto venceu!";
         blackWins++;
-        gameOver = true;
+        gameOver = true; // Define o jogo como encerrado
     } else if (blackPieces === 0) {
         winnerMessage = "O jogador Vermelho venceu!";
         redWins++;
-        gameOver = true;
+        gameOver = true; // Define o jogo como encerrado
     }
 
     if (winnerMessage !== '') {
