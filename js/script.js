@@ -12,6 +12,7 @@ function startGame() {
     createBoard();
 }
 
+
 function createBoard() {
     const board = document.getElementById('board');
     board.innerHTML = ''; // Limpa o conteúdo do tabuleiro
@@ -37,6 +38,7 @@ function createBoard() {
             }
             cell.dataset.row = row;
             cell.dataset.col = col;
+            cell.addEventListener('click', () => movePiece(cell)); // Adiciona evento de clique para mover a peça
             board.appendChild(cell);
         }
     }
@@ -49,15 +51,21 @@ function createPiece(color) {
 }
 
 function selectPiece(piece) {
+    // Verifica se há uma peça selecionada e se pertence ao jogador atual
+    if (!piece || !piece.classList.contains(currentPlayer)) return;
+
+    // Remove a classe 'selected' da peça anteriormente selecionada
     if (selectedPiece) {
         selectedPiece.classList.remove('selected');
     }
+    
+    // Define a peça selecionada e adiciona a classe 'selected' a ela
     selectedPiece = piece;
     selectedPiece.classList.add('selected');
 }
 
 function movePiece(cell) {
-    if (gameOver) return; // Se o jogo terminou, não permita mais movimentos
+    if (!selectedPiece) return; // Verifica se há uma peça selecionada
 
     const row = parseInt(cell.dataset.row);
     const col = parseInt(cell.dataset.col);
@@ -66,7 +74,7 @@ function movePiece(cell) {
 
     const isValidMove = isValidMoveForPlayer(row, col, selectedRow, selectedCol, currentPlayer);
 
-    if (selectedPiece && isValidMove) {
+    if (isValidMove) {
         if (cell.childNodes.length === 0) {
             // Movimento simples
             cell.appendChild(selectedPiece);
@@ -96,6 +104,17 @@ function movePiece(cell) {
         updateTurnDisplay(); 
         checkWinner(); // Verifica se alguém ganhou após cada movimento
     }
+}
+
+function updateBoard() {
+    const board = document.getElementById('board');
+    const cells = board.querySelectorAll('.cell');
+    cells.forEach(cell => {
+        cell.innerHTML = ''; // Limpa todas as células do tabuleiro
+    });
+
+    // Recria o tabuleiro com as novas posições das peças
+    createBoard();
 }
 
 function isValidMoveForPlayer(row, col, selectedRow, selectedCol, player) {
@@ -177,3 +196,5 @@ const turnDisplay = document.createElement('div');
 turnDisplay.id = 'turn-display';
 document.body.appendChild(turnDisplay);
 updateTurnDisplay();
+
+
