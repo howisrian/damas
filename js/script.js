@@ -8,9 +8,12 @@ let messageBox; // Variável global para armazenar a caixa de mensagem
 function startGame() {
     const welcomeScreen = document.getElementById('welcome-screen');
     const turnDisplay = document.getElementById('turn-display');
+    const board = document.getElementById('board');
+    const scoreBoard = document.getElementById('wins-panel')
     welcomeScreen.style.display = 'none'; // Oculta a tela de boas-vindas
     turnDisplay.style.display = 'flex'; // Adiciona a tela de turno
-
+    board.style.display = 'flex'; // Adiciona a tela de turno
+    scoreBoard.style.display = 'flex'
 
     // Cria o tabuleiro somente após o início do jogo
     createBoard();
@@ -102,10 +105,15 @@ function movePiece(cell) {
             }
         }
 
+        // Verifica se a peça chegou à base inimiga para se tornar uma "dama"
+        if (selectedPiece.classList.contains('red') && row === 7) {
+            selectedPiece.classList.add('king');
+        }
+
         selectedPiece.classList.remove('selected');
         selectedPiece = null;
 
-        updateTurnDisplay(); 
+        updateTurnDisplay();
         checkWinner(); // Verifica se alguém ganhou após cada movimento
     }
 }

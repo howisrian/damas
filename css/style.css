@@ -3,6 +3,7 @@ body, html {
     margin: 0;
 }
 
+
 #turn-display {
     color: #fff;
     padding: 10px 10px;
@@ -49,6 +50,10 @@ body, html {
     height: 80%;
     border-radius: 50%;
     position: relative;
+}
+
+.king{
+    background-color: gold;
 }
 
 .red {
@@ -185,4 +190,8 @@ body, html {
     justify-content: center;
     flex-direction: column;
     gap: 2rem;
+}
+
+.start{
+    display: none;
 }
