@@ -21,8 +21,6 @@ Dama Game - The goal of the project is to offer players a digital version of the
 
 # functions
 
-This code implements a simple checkers game with the following functionalities:
-
 ### Game Start: 
 When the startGame() function is called, the welcome screen is hidden, and the game screen is displayed. This is done by changing the CSS styles of the corresponding elements.
 
