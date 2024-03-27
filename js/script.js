@@ -169,11 +169,11 @@ function checkWinner() {
     if (redPieces === 0 || blackPieces === 0){
         toggleMenuScreen();
         if (redPieces === 0) {
-            menuScreen.innerHTML = '<h2>The black player wins!</h2><br><button onclick="resetGame()">Restart</button>';
+           turnDisplay.innerHTML = '<h2>The black player wins!</h2><br><button onclick="resetGame()">Restart</button>';
             blackWins++;
             gameOver = true;
         } else if (blackPieces === 0) {
-            menuScreen.innerHTML = '<h2>The red player wins!</h2><br><button onclick="resetGame()">Restart</button>';
+            turnDisplay.innerHTML = '<h2>The red player wins!</h2><br><button onclick="resetGame()">Restart</button>';
             redWins++;
             gameOver = true;
         }
