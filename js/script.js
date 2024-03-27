@@ -7,14 +7,9 @@ let messageBox; // Variável global para armazenar a caixa de mensagem
 
 function startGame() {
     const welcomeScreen = document.getElementById('welcome-screen');
-    const turnDisplay = document.getElementById('turn-display');
-    const board = document.getElementById('board');
-    const scoreBoard = document.getElementById('wins-panel')
+    const container = document.getElementById('container');
     welcomeScreen.style.display = 'none'; // Oculta a tela de boas-vindas
-    turnDisplay.style.display = 'flex'; // Adiciona a tela de turno
-    board.style.display = 'flex'; // Adiciona a tela de turno
-    scoreBoard.style.display = 'flex'
-
+    container.style.display = 'flex'; // Adiciona a tela de Jogo
     // Cria o tabuleiro somente após o início do jogo
     createBoard();
 }
