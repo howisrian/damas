@@ -19,7 +19,7 @@ Dama Game - The goal of the project is to offer players a digital version of the
 - JavaScript
 - DOM (Document Object Model)
 
-# functions
+# Functions
 
 ### Game Start: 
 When the startGame() function is called, the welcome screen is hidden, and the game screen is displayed. This is done by changing the CSS styles of the corresponding elements.
