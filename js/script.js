@@ -3,17 +3,28 @@ let currentPlayer = 'red';
 let redWins = 0;
 let blackWins = 0;
 let gameOver = false;
-let messageBox; // Variável global para armazenar a caixa de mensagem
+
 
 function startGame() {
     const welcomeScreen = document.getElementById('welcome-screen');
     const container = document.getElementById('container');
     welcomeScreen.style.display = 'none'; // Oculta a tela de boas-vindas
     container.style.display = 'flex'; // Adiciona a tela de Jogo
-    // Cria o tabuleiro somente após o início do jogo
     createBoard();
 }
 
+document.addEventListener('keydown', function(event) {
+    // Verifica se a tecla pressionada é a tecla "Esc"
+    if (event.key === 'Escape') {
+        toggleMenuScreen();
+    }
+});
+
+// document.addEventListener('click', function(event) {
+//     if (!event.target.closest('#menu-screen') && !event.target.closest('#menu-button')) {
+//         toggleMenuScreen();
+//     }
+// });
 
 function createBoard() {
     const board = document.getElementById('board');
@@ -119,8 +130,6 @@ function updateBoard() {
     cells.forEach(cell => {
         cell.innerHTML = ''; // Limpa todas as células do tabuleiro
     });
-
-    // Recria o tabuleiro com as novas posições das peças
     createBoard();
 }
 
@@ -157,51 +166,49 @@ function checkWinner() {
     const blackPieces = document.querySelectorAll('.piece.black').length;
 
     let winnerMessage = '';
-    if (redPieces === 0) {
-        winnerMessage = "O jogador Preto venceu!";
-        blackWins++;
-        gameOver = true; // Define o jogo como encerrado
-    } else if (blackPieces === 0) {
-        winnerMessage = "O jogador Vermelho venceu!";
-        redWins++;
-        gameOver = true; // Define o jogo como encerrado
+    if (redPieces === 0 || blackPieces === 0){
+        toggleMenuScreen();
+        if (redPieces === 0) {
+            menuScreen.innerHTML = '<h2>O jogador Preto venceu!</h2><br><button onclick="resetGame()">Restart</button>';
+            blackWins++;
+            gameOver = true;
+        } else if (blackPieces === 0) {
+            menuScreen.innerHTML = '<h2>O jogador Vermelho venceu!</h2><br><button onclick="resetGame()">Restart</button>';
+            redWins++;
+            gameOver = true;
+        }
     }
-
-    if (winnerMessage !== '') {
-        messageBox = document.createElement('div');
-        messageBox.classList.add('message-box');
-        messageBox.innerHTML = `
-            <p>${winnerMessage}</p>
-            <button onclick="continueGame()">Continuar</button>
-            <button onclick="resetGame()">Reiniciar</button>
-        `;
-        document.body.appendChild(messageBox);
-    }
+    
     updateWinsPanel();
 }
 
 function continueGame() {
-    if (!gameOver) return; // Não continue se o jogo já tiver terminado
-    if (messageBox) {
-        messageBox.remove();
-    }
+   toggleMenuScreen();
 }
 
 function resetGame() {
     board.innerHTML = '';
     createBoard();
     gameOver = false; // Reseta o status do jogo
-    if (messageBox) {
-        messageBox.remove();
-    }
+    toggleMenuScreen();
 }
 
 function updateWinsPanel() {
     const redWinsElement = document.querySelector('.red-wins');
     const blackWinsElement = document.querySelector('.black-wins');
-
     redWinsElement.textContent = redWins;
     blackWinsElement.textContent = blackWins;
+}
+
+
+function toggleMenuScreen() {
+    const menuScreen = document.getElementById('menu-screen');
+
+    if (menuScreen.style.display === 'none' || menuScreen.style.display === '') {
+        menuScreen.style.display = 'flex';
+    } else {
+        menuScreen.style.display = 'none';
+    }
 }
 
 

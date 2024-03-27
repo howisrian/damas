@@ -13,6 +13,72 @@ body, html {
     margin: 20px;
     z-index: 9999; 
 }
+
+#welcome-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    z-index: 999999;
+}
+
+#welcome-screen h2 {
+    margin-bottom: 20px;
+}
+
+#welcome-screen button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#welcome-screen button:hover {
+    background-color: #45a049;
+}
+
+#menu-screen {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    z-index: 99999;
+}
+
+#menu-screen h2 {
+    margin-bottom: 20px;
+}
+
+#menu-screen button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#menu-screen button:hover {
+    background-color: #45a049;
+}
+
 .container {
     display: none;
     flex-direction: column;
@@ -68,52 +134,7 @@ body, html {
     border: 2px solid rgb(255, 255, 255);
 }
 
-#welcome-screen {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border: 2px solid #333;
-    border-radius: 10px;
-}
 
-#welcome-screen h2 {
-    margin-bottom: 20px;
-}
-
-#welcome-screen button {
-    font-size: 18px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#welcome-screen button:hover {
-    background-color: #45a049;
-}
-
-
-.message-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 2px solid #333;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    z-index: 9999;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    display: none;
-}
 
 .message-box p {
     font-size: 18px;
