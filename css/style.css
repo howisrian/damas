@@ -283,16 +283,6 @@ body, html {
         width: 65%;
     }
 
-    .info-button {
-        font-size: 8vw; 
-        left: 5px; 
-    }
-
-    .menu-button {
-        display: none; 
-        font-size: 8vw;
-        left: 85%;
-    }
 
     #turn-display{
         font-size: 23px;
