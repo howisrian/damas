@@ -11,7 +11,7 @@ body, html {
     margin: 0;
 }
 
-header{
+.header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,7 @@ header{
     z-index: 999;
 }
 
-header h1 {
+.header h1 {
     margin: 0;
     text-align: center;
     flex-grow: 1;
@@ -265,7 +265,7 @@ header h1 {
 
 
 @media (max-width: 920px) {
-    header h1{
+    .header h1{
         font-size: 30px;
     }
 
