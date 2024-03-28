@@ -108,7 +108,7 @@ function movePiece(cell) {
                     // Movimento de captura
                     cell.removeChild(opponentPiece);
                     nextCell.appendChild(selectedPiece);
-                    // Verifica se a peça chegou à base inimiga para se tornar uma "dama"
+                    // Verifica se a peça chegou à base inimiga para se tornar uma "dama" após capturar uma peça inimiga
                     if ((currentPlayer === 'red' && nextRow === 7) || (currentPlayer === 'black' && nextRow === 0)) {
                         selectedPiece.classList.add('king');
                         // Adiciona uma coroa apenas para as peças que se tornaram damas
