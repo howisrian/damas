@@ -20,12 +20,6 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// document.addEventListener('click', function(event) {
-//     if (!event.target.closest('#menu-screen') && !event.target.closest('#menu-button')) {
-//         toggleMenuScreen();
-//     }
-// });
-
 function createBoard() {
     const board = document.getElementById('board');
     board.innerHTML = ''; // Limpa o conteúdo do tabuleiro
@@ -91,7 +85,15 @@ function movePiece(cell) {
         if (cell.childNodes.length === 0) {
             // Movimento simples
             cell.appendChild(selectedPiece);
-            currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
+            // Verifica se a peça chegou à base inimiga para se tornar uma "dama"
+            if ((currentPlayer === 'red' && row === 7) || (currentPlayer === 'black' && row === 0)) {
+                selectedPiece.classList.add('king');
+                // Adiciona uma coroa apenas para as peças que se tornaram damas
+                const crown = document.createElement('i');
+                crown.classList.add('fas', 'fa-crown', 'crown-icon');
+                selectedPiece.appendChild(crown);
+            }
+            currentPlayer = currentPlayer === 'red' ? 'black' : 'red'; // Alterna o jogador atual
         } else if (cell.childNodes.length === 1) {
             const opponentPiece = cell.childNodes[0];
             const opponentRow = parseInt(cell.dataset.row);
@@ -106,14 +108,17 @@ function movePiece(cell) {
                     // Movimento de captura
                     cell.removeChild(opponentPiece);
                     nextCell.appendChild(selectedPiece);
-                    currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
+                    // Verifica se a peça chegou à base inimiga para se tornar uma "dama"
+                    if ((currentPlayer === 'red' && nextRow === 7) || (currentPlayer === 'black' && nextRow === 0)) {
+                        selectedPiece.classList.add('king');
+                        // Adiciona uma coroa apenas para as peças que se tornaram damas
+                        const crown = document.createElement('i');
+                        crown.classList.add('fas', 'fa-crown', 'crown-icon');
+                        selectedPiece.appendChild(crown);
+                    }
+                    currentPlayer = currentPlayer === 'red' ? 'black' : 'red'; // Alterna o jogador atual
                 }
             }
-        }
-
-        // Verifica se a peça chegou à base inimiga para se tornar uma "dama"
-        if (selectedPiece.classList.contains('red') && row === 7) {
-            selectedPiece.classList.add('king');
         }
 
         selectedPiece.classList.remove('selected');
@@ -124,6 +129,7 @@ function movePiece(cell) {
     }
 }
 
+
 function updateBoard() {
     const board = document.getElementById('board');
     const cells = board.querySelectorAll('.cell');
@@ -133,17 +139,50 @@ function updateBoard() {
     createBoard();
 }
 
+
 function isValidMoveForPlayer(row, col, selectedRow, selectedCol, player) {
     const direction = player === 'red' ? 1 : -1;
     const selectedPieceInRightDirection = (selectedRow + direction * 2) >= 0 && (selectedRow + direction * 2) < 8;
     const isMoveWithinBoard = row >= 0 && row < 8;
 
-    if (!isMoveWithinBoard || (selectedRow === row)) {
+    if (!isMoveWithinBoard || (selectedRow === row && selectedCol === col)) {
         return false;
     }
 
+    // Verifica se o movimento é válido para uma peça comum
     if ((row === selectedRow + direction) && (col === selectedCol + direction || col === selectedCol - direction)) {
         return true;
+    }
+
+    // Verifica se o movimento é válido para uma dama
+    if (selectedPiece.classList.contains('king')) {
+        // Verifica se o movimento é na diagonal
+        if (Math.abs(row - selectedRow) === Math.abs(col - selectedCol)) {
+            // Verifica se não há peças no caminho
+            const stepRow = Math.sign(row - selectedRow);
+            const stepCol = Math.sign(col - selectedCol);
+            let nextRow = selectedRow + stepRow;
+            let nextCol = selectedCol + stepCol;
+            while (nextRow !== row && nextCol !== col) {
+                const nextCell = document.querySelector(`[data-row="${nextRow}"][data-col="${nextCol}"]`);
+                if (nextCell.childNodes.length !== 0) {
+                    return false;
+                }
+                nextRow += stepRow;
+                nextCol += stepCol;
+            }
+            return true;
+        }
+    }
+
+    // Verifica se o movimento é válido para capturar uma peça adversária
+    if ((row === selectedRow + direction * 2) && (col === selectedCol + direction * 2 || col === selectedCol - direction * 2)) {
+        const opponentRow = selectedRow + direction;
+        const opponentCol = selectedCol + direction;
+        const opponentCell = document.querySelector(`[data-row="${opponentRow}"][data-col="${opponentCol}"]`);
+        if (opponentCell.childNodes.length !== 0 && !opponentCell.firstChild.classList.contains(player)) {
+            return true;
+        }
     }
     
     return false;

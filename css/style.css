@@ -1,11 +1,20 @@
+:root{
+    --back-screen:#3F3F3F;
+    --button:#008000;
+    --txt-screen:#FFFFFF;
+
+
+}
+
+
+
 body, html {
     height: 100%;
     margin: 0;
 }
 
-
 #turn-display {
-    color: #fff;
+    color:var(--txt-screen);
     padding: 10px 10px;
     border-radius: 5px;
     font-family: Arial, sans-serif;
@@ -20,9 +29,10 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: #f9f9f9;
+    background-color:var(--back-screen);
+    color: var(--txt-screen);
     padding: 20px;
-    border: 2px solid #333;
+    border: 2px solid var(--button);
     border-radius: 10px;
     z-index: 999999;
 }
@@ -34,12 +44,13 @@ body, html {
 #welcome-screen button {
     font-size: 18px;
     padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    background-color: var(--button);
+    color: var(--txt-screen);
+    border: 2px solid var(--button);
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
+    z-index: 999999;
 }
 
 #welcome-screen button:hover {
@@ -52,27 +63,23 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: #f9f9f9;
+    background-color: var(--back-screen);
     padding: 20px;
-    border: 2px solid #333;
+    border: 2px solid var(--button);
     border-radius: 10px;
-    z-index: 99999;
-}
-
-#menu-screen h2 {
-    margin-bottom: 20px;
+    text-align: center;
+    z-index: 999999;
 }
 
 #menu-screen button {
-    font-size: 18px;
+    margin: 10px;
     padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--button);
+    color: var(--txt-screen);
+    border: 2px solid var(--button);
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 #menu-screen button:hover {
@@ -118,9 +125,15 @@ body, html {
     position: relative;
 }
 
-.king{
-    background-color: gold;
+.crown-icon {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: gold; /* Cor da coroa */
 }
+
 
 .red {
     background-color: red;
