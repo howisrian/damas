@@ -6,8 +6,6 @@
 
 }
 
-
-
 body, html {
     height: 100%;
     margin: 0;
@@ -101,6 +99,7 @@ body, html {
 }
 
 .info-button {
+    display: block;
     position: absolute;
     top: 10px;
     left: 10px;
@@ -112,6 +111,22 @@ body, html {
     border: none;
   }
   .info-button:focus {
+    outline: none;
+  }
+
+  .menu-button {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 95%;
+    z-index: 1000;
+    cursor: pointer;
+    color: #333;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+  }
+  .menu-button:focus {
     outline: none;
   }
 
@@ -138,7 +153,6 @@ body, html {
     justify-content: center;
     height: 100%;
 }
-
 .board {
     width: 400px;
     height: 400px;
@@ -192,7 +206,6 @@ body, html {
 .selected {
     border: 2px solid rgb(255, 255, 255);
 }
-
 
 .scoreboard {
     margin-top: 20px;

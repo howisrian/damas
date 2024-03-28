@@ -7,9 +7,11 @@ let gameOver = false;
 
 function startGame() {
     const welcomeScreen = document.getElementById('welcome-screen');
+    const menuButton = document.getElementById('menu-button');
     const container = document.getElementById('container');
     welcomeScreen.style.display = 'none'; // Oculta a tela de boas-vindas
     container.style.display = 'flex'; // Adiciona a tela de Jogo
+    menuButton.style.display = 'block'
     createBoard();
 }
 
