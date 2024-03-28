@@ -284,13 +284,13 @@ header h1 {
     }
 
     .info-button {
-        font-size: 6vw; 
+        font-size: 8vw; 
         left: 5px; 
     }
 
     .menu-button {
         display: none; 
-        font-size: 6vw;
+        font-size: 8vw;
         left: 85%;
     }
 
