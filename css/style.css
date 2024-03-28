@@ -7,12 +7,59 @@
 }
 
 body, html {
-    height: 100%;
+    height: 95%;
     margin: 0;
 }
 
-.display{
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    padding: 10px 20px;
+    z-index: 999;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+    font-size: 50px;
+}
+
+
+.info-button {
+    display: flex;
+    position: absolute;
+    z-index: 1000;
+    cursor: pointer;
+    color: #333;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+}
+
+.info-button:focus {
+    outline: none;
+}
+
+.menu-button {
+    display: none;
+    position: absolute;
+    left: 95%;
+    z-index: 1000;
+    cursor: pointer;
+    color: #333;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+}
+
+.menu-button:focus {
+    outline: none;
 }
 
 #welcome-screen {
@@ -91,38 +138,6 @@ body, html {
     padding: 20px;
     z-index: 8888888;
 }
-
-.info-button {
-    display: block;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
-    cursor: pointer;
-    color: #333;
-    font-size: 40px;
-    background-color: transparent;
-    border: none;
-  }
-  .info-button:focus {
-    outline: none;
-  }
-
-  .menu-button {
-    display: none;
-    position: absolute;
-    top: 10px;
-    left: 95%;
-    z-index: 1000;
-    cursor: pointer;
-    color: #333;
-    font-size: 40px;
-    background-color: transparent;
-    border: none;
-  }
-  .menu-button:focus {
-    outline: none;
-  }
 
   .close-info {
     position: absolute;
@@ -250,6 +265,10 @@ body, html {
 
 
 @media (max-width: 920px) {
+    header h1{
+        font-size: 30px;
+    }
+
     #welcome-screen{
         width: 55%;
         font-size: 15px;
@@ -272,7 +291,7 @@ body, html {
     .menu-button {
         display: none; 
         font-size: 6vw;
-        left: 80%;
+        left: 85%;
     }
 
     #turn-display{
