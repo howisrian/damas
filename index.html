@@ -9,15 +9,22 @@
 
 </head>
 <body>
+    <div id="info-screen">
+        <button class="close-info" onclick="toggleInfoScreen()"><i class="fas fa-times"></i></button>
+        <h2>Information</h2>
+        <p>Copyright &#169; 2024 by Rian Santos. All rights reserved.</p>
+        
+    </div>
     <div id="welcome-screen">
         <h2>Welcome Dama Game</h2>
         <p>Press Esc for menu</p>
-        <button onclick="startGame()">Start Game</button>
+        <button  onclick="startGame()">Start Game</button>
     </div>
     <div id="menu-screen">
-        <button onclick="continueGame()">Continue</button>
-        <button onclick="resetGame()">Restart</button>
+        <button  onclick="continueGame()">Continue</button>
+        <button  onclick="resetGame()">Restart</button>
     </div>
+    <button class="info-button" id="info-button"><i class="fas fa-info-circle"></i></button>
     <div id="container" class="container">
         <h1>Dama Game</h1>
         <div id="turn-display" ></div>
@@ -34,11 +41,6 @@
         
         
     </div>
-    <footer class="end">
-        <div class="last-text">
-            <p>Copyright &#169; 2024 by Rian Santos. All rights reserved.</p>
-        </div>
-    </footer>
     <script src="./js/script.js"></script>
 </body>
 </html>

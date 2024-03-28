@@ -1,5 +1,5 @@
 :root{
-    --back-screen:#3F3F3F;
+    --bg-screen:#3F3F3F;
     --button:#008000;
     --txt-screen:#FFFFFF;
 
@@ -29,7 +29,7 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color:var(--back-screen);
+    background-color:var(--bg-screen);
     color: var(--txt-screen);
     padding: 20px;
     border: 2px solid var(--button);
@@ -63,7 +63,7 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--back-screen);
+    background-color: var(--bg-screen);
     padding: 20px;
     border: 2px solid var(--button);
     border-radius: 10px;
@@ -85,6 +85,51 @@ body, html {
 #menu-screen button:hover {
     background-color: #45a049;
 }
+
+#info-screen{
+    display: none; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    color: var(--txt-screen);
+    background-color: var(--bg-screen);
+    border: 2px solid var(--button);
+    border-radius: 10px; 
+    padding: 20px;
+    z-index: 8888888;
+}
+
+.info-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    cursor: pointer;
+    color: #333;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+  }
+  .info-button:focus {
+    outline: none;
+  }
+
+  .close-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99999999; /* Certifique-se de que o botão está acima de outros elementos */
+    cursor: pointer;
+    color: #333;
+    font-size: 20px;
+    background-color: transparent;
+    color: var(--txt-screen);
+    border: none;
+  }
+  .close-info:focus {
+    outline: none;
+  }
 
 .container {
     display: none;
@@ -149,23 +194,6 @@ body, html {
 }
 
 
-
-.message-box p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.message-box button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 0 10px;
-}
-
-
 .scoreboard {
     margin-top: 20px;
     display: flex;
@@ -184,7 +212,8 @@ body, html {
 #wins-panel {
     margin-top: 20px;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #525050;
+    color: var(--txt-screen);
     border-radius: 5px;
     font-family: Arial, sans-serif;
     display: flex;
@@ -199,7 +228,6 @@ body, html {
 }
 
 #wins-panel .content-score {
-    background-color: #f0f0f0;
     font-size: 20px;
     font-weight: 700;
     border-radius: 5px;

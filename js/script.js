@@ -20,6 +20,8 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+document.getElementById('info-button').addEventListener('click', toggleInfoScreen);
+
 function createBoard() {
     const board = document.getElementById('board');
     board.innerHTML = ''; // Limpa o conteúdo do tabuleiro
@@ -247,6 +249,16 @@ function toggleMenuScreen() {
         menuScreen.style.display = 'flex';
     } else {
         menuScreen.style.display = 'none';
+    }
+}
+
+function toggleInfoScreen(){
+    const infoScreen = document.getElementById('info-screen');
+
+    if (infoScreen.style.display === 'none' || infoScreen.style.display === '') {
+        infoScreen.style.display = 'block';
+    } else {
+        infoScreen.style.display = 'none';
     }
 }
 
