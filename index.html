@@ -9,35 +9,36 @@
 
 </head>
 <body>
-    <div id="info-screen">
-        <button class="close-info" onclick="toggleInfoScreen()"><i class="fas fa-times"></i></button>
-        <h2>Information</h2>
-        <p>Copyright &#169; 2024 by Rian Santos. All rights reserved.</p>
-    </div>
-    <div id="welcome-screen">
-        <h2>Welcome Dama Game</h2>
-        <button  onclick="startGame()">Start Game</button>
-    </div>
-    <div id="menu-screen">
-        <button  onclick="continueGame()">Continue</button>
-        <button  onclick="resetGame()">Restart</button>
-    </div>
-    <button class="info-button" id="info-button"><i class="fas fa-info-circle"></i></button>
-    <button class="menu-button" id="menu-button" onclick="toggleMenuScreen()"><i class="fas fa-pause"></i></button>
-    <div id="container" class="container">
-        <h1>Dama Game</h1>
-        <div id="turn-display" ></div>
-        <div id="board" class="board"></div>
-        <div id="wins-panel" >
-            <div>
-                <h2>Scoreboard</h2>
-                <div class="content-score">
-                    <p class="red-wins">0</p>
-                    <p class="black-wins">0</p>
+    <div class="display">
+        <div id="info-screen">
+            <button class="close-info" onclick="toggleInfoScreen()"><i class="fas fa-times"></i></button>
+            <h2>Information</h2>
+            <p>Copyright &#169; 2024 by Rian Santos. All rights reserved.</p>
+        </div>
+        <div id="welcome-screen">
+            <h2>Welcome Dama Game</h2>
+            <button  onclick="startGame()">Start Game</button>
+        </div>
+        <div id="menu-screen">
+            <button  onclick="continueGame()">Continue</button>
+            <button  onclick="resetGame()">Restart</button>
+        </div>
+        <button class="info-button" id="info-button"><i class="fas fa-info-circle"></i></button>
+        <button class="menu-button" id="menu-button" onclick="toggleMenuScreen()"><i class="fas fa-pause"></i></button>
+        <div id="container" class="container">
+            <h1>Dama Game</h1>
+            <div id="turn-display" ></div>
+            <div id="board" class="board"></div>
+            <div id="wins-panel" >
+                <div>
+                    <h2>Scoreboard</h2>
+                    <div class="content-score">
+                        <p class="red-wins">0</p>
+                        <p class="black-wins">0</p>
+                    </div>
                 </div>
             </div>
         </div>
-        
         
     </div>
     <script src="./js/script.js"></script>
