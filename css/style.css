@@ -268,7 +268,8 @@ body, html {
 
     .menu-button {
         display: none; 
-        font-size: 3vw;
+        font-size: 6vw;
+        left: 80%;
     }
 
     #turn-display{
