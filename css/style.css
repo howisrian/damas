@@ -265,6 +265,10 @@ body, html {
 
 
 @media (max-width: 920px) {
+    .header{
+        width: 80%;
+    }
+    
     .header h1{
         font-size: 30px;
     }
