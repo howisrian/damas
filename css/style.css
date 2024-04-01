@@ -31,6 +31,9 @@ body, html {
     text-align: center;
     flex-grow: 1;
     font-size: 50px;
+    color: #8B4513; /* Cor marrom para combinar com o fundo de madeira */
+    font-family: 'Roboto', sans-serif; /* Fonte moderna */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona sombra para dar profundidade */
 }
 
 
@@ -39,7 +42,7 @@ body, html {
     position: absolute;
     z-index: 1000;
     cursor: pointer;
-    color: #333;
+    color: #69340e; 
     font-size: 40px;
     background-color: transparent;
     border: none;
@@ -49,13 +52,18 @@ body, html {
     outline: none;
 }
 
+.info-button:hover {
+    color: #A0522D; 
+    transition: color 0.3s; 
+}
+
 .menu-button {
     display: none;
     position: absolute;
     left: 95%;
     z-index: 1000;
     cursor: pointer;
-    color: #333;
+    color: #69340e; 
     font-size: 40px;
     background-color: transparent;
     border: none;
@@ -63,6 +71,11 @@ body, html {
 
 .menu-button:focus {
     outline: none;
+}
+
+.menu-button:hover {
+    color: #A0522D; 
+    transition: color 0.3s; 
 }
 
 #welcome-screen {
@@ -73,22 +86,24 @@ body, html {
     text-align: center;
     background-color:var(--bg-screen);
     color: var(--txt-screen);
-    padding: 20px;
+    padding: 40px;
     border: 2px solid var(--button);
-    border-radius: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     z-index: 999999;
 }
 
 #welcome-screen h2 {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 24px;
 }
 
 #welcome-screen button {
-    font-size: 18px;
-    padding: 10px 20px;
+    font-size: 20px;
+    padding: 15px 30px;
     background-color: var(--button);
     color: var(--txt-screen);
-    border: 2px solid var(--button);
+    border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -161,6 +176,7 @@ body, html {
   }
 
 .container {
+    padding: 50px;
     display: none;
     flex-direction: column;
     align-items: center;
