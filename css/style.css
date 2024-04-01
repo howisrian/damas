@@ -278,7 +278,7 @@ body, html {
 .black-wins::before {
     background-color: #000; /* Preto para o jogador preto */
 
-
+}
 @media (max-width: 920px) {
     .header{
         width: 80%;
