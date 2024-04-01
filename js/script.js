@@ -65,12 +65,10 @@ function selectPiece(piece) {
     // Verifica se há uma peça selecionada e se pertence ao jogador atual
     if (!piece || !piece.classList.contains(currentPlayer)) return;
 
-    // Remove a classe 'selected' da peça anteriormente selecionada
     if (selectedPiece) {
         selectedPiece.classList.remove('selected');
     }
     
-    // Define a peça selecionada e adiciona a classe 'selected' a ela
     selectedPiece = piece;
     selectedPiece.classList.add('selected');
 }
