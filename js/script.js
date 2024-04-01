@@ -210,11 +210,9 @@ function checkWinner() {
     if (redPieces === 0 || blackPieces === 0){
         toggleMenuScreen();
         if (redPieces === 0) {
-           turnDisplay.innerHTML = '<h2>The black player wins!</h2><br><button onclick="resetGame()">Restart</button>';
             blackWins++;
             gameOver = true;
         } else if (blackPieces === 0) {
-            turnDisplay.innerHTML = '<h2>The red player wins!</h2><br><button onclick="resetGame()">Restart</button>';
             redWins++;
             gameOver = true;
         }
@@ -235,10 +233,10 @@ function resetGame() {
 }
 
 function updateWinsPanel() {
-    const redWinsElement = document.querySelector('.red-wins');
-    const blackWinsElement = document.querySelector('.black-wins');
-    redWinsElement.textContent = redWins;
-    blackWinsElement.textContent = blackWins;
+    const redWinsElement = document.getElementById('red-wins');
+    const blackWinsElement = document.getElementById('black-wins');
+    redWinsElement.textContent = `Red Wins: ${redWins}`;
+    blackWinsElement.textContent = `Black Wins: ${blackWins}`;
 }
 
 
@@ -261,12 +259,5 @@ function toggleInfoScreen(){
         infoScreen.style.display = 'none';
     }
 }
-
-
-
-const turnDisplay = document.createElement('div');
-turnDisplay.id = 'turn-display';
-document.body.appendChild(turnDisplay);
-updateTurnDisplay();
 
 

@@ -1,7 +1,7 @@
 :root{
-    --bg-screen:#3F3F3F;
-    --button:#008000;
-    --txt-screen:#FFFFFF;
+    --bg-screen: #4d2e0c;
+    --button: #8b4513; 
+    --txt-screen: #ffffff; 
 
 
 }
@@ -93,10 +93,11 @@ body, html {
     cursor: pointer;
     transition: background-color 0.3s;
     z-index: 999999;
+    transition: all .45s ease;
 }
 
 #welcome-screen button:hover {
-    background-color: #45a049;
+    transform: scale(.9);
 }
 
 #menu-screen {
@@ -122,10 +123,11 @@ body, html {
     border: 2px solid var(--button);
     border-radius: 10px;
     cursor: pointer;
+    transition: all .45s ease;
 }
 
 #menu-screen button:hover {
-    background-color: #45a049;
+    transform: scale(.9);
 }
 
 #info-screen{
@@ -234,40 +236,47 @@ body, html {
 }
 
 
-#wins-panel {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #525050;
+.wins-panel {
+    background-color: var(--bg-screen);
+    width: 400px;
+    height: 100px;
+    flex-direction: column;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: var(--txt-screen);
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    border: 2px solid #000;
-    width: 300px;
 }
 
-#wins-panel h2 {
-    margin: 0;
-    font-size: 20px;
+.wins-panel h2 {
+    margin-top: 0;
+    text-align: center;
 }
 
-#wins-panel .content-score {
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 5px;
+.content-score {
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
 }
 
-#wins-panel .red-wins {
-    color: red;
+.red-wins, .black-wins {
+    font-weight: bold;
 }
 
-#wins-panel .black-wins {
-    color: black;
+.red-wins::before, .black-wins::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
+
+.red-wins::before {
+    background-color: #ff0000; /* Vermelho para o jogador vermelho */
+}
+
+.black-wins::before {
+    background-color: #000; /* Preto para o jogador preto */
 
 
 @media (max-width: 920px) {
