@@ -4,7 +4,7 @@
 
 ## About
 
-Dama Game is a digital version of the classic checkers game, offering players a fun and challenging experience while practicing front-end web development skills. The project aims to recreate the rules and mechanics of the game using HTML, CSS, and JavaScript.
+Dama Game is a digital version of the classic checkers game, offering players a fun and challenging experience. The project aims to recreate the rules and mechanics of the game using HTML, CSS, and JavaScript.
 
 ## Screenshots
 
